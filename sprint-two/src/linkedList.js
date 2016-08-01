@@ -8,13 +8,15 @@ var LinkedList = function() {
     if (!list.head) {
       list.head = newNode;
     }
+    if (list.tail) {
+      list.tail.next = newNode;
+    }
     list.tail = newNode;
   };
 
   list.removeHead = function() {
     var oldHead = list.head;
-    list.head = list.tail;
-    list.tail = list.tail.next;
+    list.head = list.head.next;
     return oldHead.value;
   };
 
@@ -22,12 +24,10 @@ var LinkedList = function() {
     var node = list.head;
     while (node) {
       if (node.value === target) {
-        console.log('contains:', target)
         return true;
       }
       node = node.next;
     }
-    console.log('to false')
     return false;
   };
 
