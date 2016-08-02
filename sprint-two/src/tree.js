@@ -1,21 +1,27 @@
 var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
-
-  // your code here
-  newTree.children = null;  // fix me
-
+  newTree.children = [];
+  _.extend(newTree, treeMethods);
   return newTree;
 };
 
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  // your code here
-  newTree.children = null;  // fix me
+  newChild = Tree(value);
+  this.children.push(newChild);
 };
 
 treeMethods.contains = function(target) {
+	if (this.value === target) {
+		return true;
+	} 
+	for (var i = 0; i < this.children.length; i++) {
+		var child = this.children[i];
+		if (child.children[i])
+	}
+
 };
 
 
