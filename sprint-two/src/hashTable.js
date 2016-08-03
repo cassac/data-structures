@@ -23,19 +23,15 @@ HashTable.prototype.insert = function(k, v) {
 };
 
 HashTable.prototype.retrieve = function(k) {
-  var match;
   var index = getIndexBelowMaxForKey(k, this._limit);
-  this._storage.each(function(bucket, i) {
-    if (bucket === undefined) { return; }
-    for (var i = 0; i < bucket.length; i++) {
-      var tuple = bucket[i];
-      if (tuple[0] === k) {
-        match = tuple[1];
-        break;
-      }
+  var bucket = this._storage.get(index) || [];
+  for (var i = 0; i < bucket.length; i++) {
+    var tuple = bucket[i];
+    if (tuple[0] === k) {
+      return tuple[1];
     }
-  });
-  return match;
+  }
+  return undefined;
 };
 
 HashTable.prototype.remove = function(k) {
