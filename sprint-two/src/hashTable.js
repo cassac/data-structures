@@ -7,6 +7,11 @@ var HashTable = function() {
 
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
+  var bucket = this._storage[index] || [];
+  var tuple = [k, v];
+  if (bucket.length) {
+  	bucket.push(tuple);
+  }
 };
 
 HashTable.prototype.retrieve = function(k) {
