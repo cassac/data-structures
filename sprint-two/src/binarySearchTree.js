@@ -31,7 +31,14 @@ binaryMethods.insert = function(value) {
 };
 
 binaryMethods.contains = function(value) {
-
+  if (this.value === value) {
+    return true;
+  } 
+  if (this.value < value) {
+    return !!(this.right && this.right.contains(value));
+  } else if (this.value > value) {
+    return !!(this.left && this.left.contains(value));
+  }
 };
 
 binaryMethods.depthFirstLog = function() {
