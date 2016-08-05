@@ -41,8 +41,15 @@ binaryMethods.contains = function(value) {
   }
 };
 
-binaryMethods.depthFirstLog = function() {
-
+binaryMethods.depthFirstLog = function(cb) {
+  console.log(this)
+  cb(this.value);
+  if (this.left) {
+    this.left.depthFirstLog(cb);
+  } 
+  if (this.right) {
+    this.right.depthFirstLog(cb);
+  }
 };
 
 /*
